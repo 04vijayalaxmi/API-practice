@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript Siblings</title>
+</head>
+<body>
+    <ul id="menu">
+        <li>Home</li>
+        <li>Products</li>
+        <li class="current">Customer Support</li>
+        <li>Careers</li>
+        <li>Investors</li>
+        <li>News</li>
+        <li>About Us</li>
+    </ul>
+    
+    <script>
+        let getSiblings = function (e) {
+            
+            let siblings = []; 
+            
+            if(!e.parentNode) {
+                return siblings;
+            }
+        
+            let sibling  = e.parentNode.firstChild;
+            
+            while (sibling) {
+                if (sibling.nodeType === 1 && sibling !== e) {
+                    siblings.push(sibling);
+                }
+                sibling = sibling.nextSibling;
+            }
+            return siblings;
+        };
+
+        let siblings = getSiblings(document.querySelector('.current'));
+        siblingText = siblings.map(e => e.innerHTML);
+        console.log(siblingText);
+    </script>
+</body>
+</html>

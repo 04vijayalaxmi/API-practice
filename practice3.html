@@ -1,0 +1,46 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Example</title>
+</head>
+<body>
+    <h1>Fetch API Example</h1>
+    <button id="getData">Get Data</button>
+    <button id="putData">Put Data</button>
+
+    <script>
+        document.getElementById('getData').addEventListener('click', getData);
+document.getElementById('putData').addEventListener('click', putData);
+
+function getData() {
+    fetch('https://jsonplaceholder.typicode.com/posts/1')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+}
+
+function putData() {
+    fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: 1,
+            title: 'foo',
+            body: 'bar',
+            userId: 1
+        })
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+}
+
+    </script>
+</body>
+</html>
+
+    
